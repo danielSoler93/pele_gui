@@ -27,28 +27,23 @@ public class atom_actions : MonoBehaviour
 
     private void UpdateResnameAndChain(atom_actions atom)
     {
-        foreach (GameObject package in GameObject.FindGameObjectsWithTag("package"))
+        Debug.Log(general_manager.manager.helper);
+        GameObject package = general_manager.manager.helper.SelectActivePackage();
+        Debug.Log(package.transform.childCount);
+        for (int i = 0; i < package.transform.childCount; i++)
         {
-            if (package.activeSelf)
+            if (package.transform.GetChild(i).transform.name == "resname_panel")
             {
-                Debug.Log(package.transform.childCount);
-                for (int i = 0; i < package.transform.childCount; i++)
-                {
-                    if (package.transform.GetChild(i).transform.name == "resname_panel")
-                    {
-                        InputField inputField = package.transform.GetChild(i).transform.GetComponentInChildren<InputField>();
-                        inputField.text = atom.GetComponent<atom_properties>().residue;
-                    }
-                    if (package.transform.GetChild(i).transform.name == "chain_panel")
-                    {
-                        InputField inputField = package.transform.GetChild(i).transform.GetComponentInChildren<InputField>();
-                        inputField.text = atom.GetComponent<atom_properties>().chain;
-                    }
-
-                }
-
+                InputField inputField = package.transform.GetChild(i).transform.GetComponentInChildren<InputField>();
+                inputField.text = atom.GetComponent<atom_properties>().residue;
             }
-        }
+            if (package.transform.GetChild(i).transform.name == "chain_panel")
+            {
+                InputField inputField = package.transform.GetChild(i).transform.GetComponentInChildren<InputField>();
+                inputField.text = atom.GetComponent<atom_properties>().chain;
+            }
+
+         }
     }
 
     private void UpdateInitialPosition(atom_actions atom)

@@ -20,6 +20,7 @@ using System.Collections.Generic;
         public List<GameObject> inputs = new List<GameObject>();
         public pick_atom pick_atom;
         public pick_atom pick_initial_position;
+        public helpers helper;
 
     //public GameObject go = new GameObject();
     //public loader_pdb loader = go.AddComponent<loader_pdb>();
