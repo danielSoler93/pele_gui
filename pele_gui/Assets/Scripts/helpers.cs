@@ -36,6 +36,7 @@ public class helpers : MonoBehaviour
             if (package.transform.GetChild(i).transform.name == panel)
             {
                 InputField inputField = package.transform.GetChild(i).transform.GetComponentInChildren<InputField>();
+                Debug.Log(inputField);
                 return inputField.text;
             }
         }
@@ -44,8 +45,6 @@ public class helpers : MonoBehaviour
 
     public string WriteLine(string key, string value, string fileContent)
     {
-        Debug.Log("value");
-        Debug.Log(value);
         if (value != null)
         {
             fileContent += key + ": " + value +  "\n";

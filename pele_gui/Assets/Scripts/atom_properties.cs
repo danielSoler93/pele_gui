@@ -9,6 +9,8 @@ public class atom_properties : MonoBehaviour
     public Vector3 position;
     public string chain;
     public string atomname;
+    public string resnum;
+
     // Start is called before the first frame update
     void Start()
     {

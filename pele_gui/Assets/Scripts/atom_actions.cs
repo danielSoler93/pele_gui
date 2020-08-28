@@ -27,9 +27,7 @@ public class atom_actions : MonoBehaviour
 
     private void UpdateResnameAndChain(atom_actions atom)
     {
-        Debug.Log(general_manager.manager.helper);
         GameObject package = general_manager.manager.helper.SelectActivePackage();
-        Debug.Log(package.transform.childCount);
         for (int i = 0; i < package.transform.childCount; i++)
         {
             if (package.transform.GetChild(i).transform.name == "resname_panel")
@@ -52,14 +50,13 @@ public class atom_actions : MonoBehaviour
         {
             if (package.activeSelf)
             {
-                Debug.Log(package.transform.childCount);
                 for (int i = 0; i < package.transform.childCount; i++)
                 {
                     if (package.transform.GetChild(i).transform.name == "initial_panel")
                     {
                         InputField inputField = package.transform.GetChild(i).transform.GetComponentInChildren<InputField>();
                         inputField.text = atom.GetComponent<atom_properties>().chain +
-                            ":" + atom.GetComponent<atom_properties>().residue +
+                            ":" + atom.GetComponent<atom_properties>().resnum +
                             ":" + atom.GetComponent<atom_properties>().atomname;
                     }
                 }
@@ -74,14 +71,13 @@ public class atom_actions : MonoBehaviour
         {
             if (package.activeSelf)
             {
-                Debug.Log(package.transform.childCount);
                 for (int i = 0; i < package.transform.childCount; i++)
                 {
                     if (package.transform.GetChild(i).transform.name == "final_panel")
                     {
                         InputField inputField = package.transform.GetChild(i).transform.GetComponentInChildren<InputField>();
                         inputField.text = atom.GetComponent<atom_properties>().chain +
-                            ":" + atom.GetComponent<atom_properties>().residue +
+                            ":" + atom.GetComponent<atom_properties>().resnum +
                             ":" + atom.GetComponent<atom_properties>().atomname;
                     }
                 }

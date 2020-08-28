@@ -12,8 +12,6 @@ using System.Collections.Generic;
     public class general_manager : MonoBehaviour
     {
         public static general_manager manager;
-        public Dropdown package_dropdown;
-        public GameObject package_sidebar;
         public GameObject viewer;
         public GameObject prefab_template;
         Vector3 last_position = new Vector3(0, 0, 0);
@@ -21,6 +19,8 @@ using System.Collections.Generic;
         public pick_atom pick_atom;
         public pick_atom pick_initial_position;
         public helpers helper;
+        public package_manager packageManager;
+        public string system = null;
 
     //public GameObject go = new GameObject();
     //public loader_pdb loader = go.AddComponent<loader_pdb>();
@@ -37,7 +37,6 @@ using System.Collections.Generic;
         {
             Destroy(this.gameObject);
         }
-            package_dropdown.value = 0;
         }
 
         // Update is called once per frame
@@ -46,25 +45,6 @@ using System.Collections.Generic;
 
         }
 
-
-        public void Change_PackagePanel()
-        {
-            // Switch left panel
-            string package_selected = package_dropdown.options[package_dropdown.value].text.ToLower();
-            Debug.Log(package_selected);
-            foreach (Transform package in package_sidebar.transform)
-            {
-                if (package.name == package_selected)
-                {
-                    package.gameObject.SetActive(true);
-                }
-                else
-                {
-                    package.gameObject.SetActive(false);
-
-                }
-            }
-        }
 
 
 
@@ -93,7 +73,6 @@ using System.Collections.Generic;
             {
                 GameObject input = create_prefab(text_input, path);
                 inputs.Add(input);
-                Debug.Log(inputs.Count);
             }
             //If already generated inputs
             else
@@ -119,7 +98,6 @@ using System.Collections.Generic;
                             last_input.transform.position +
                             new Vector3(0, -last_input.GetComponent<RectTransform>().rect.height + (float) 3, 0);
                         inputs.Add(input);
-                        Debug.Log(inputs.Count);
 
 
                     }
@@ -153,8 +131,6 @@ using System.Collections.Generic;
         {
 
             string texto = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text;
-            Debug.Log(texto);
-            Debug.Log(panel.name);
         }
 
         private void input_actions()
